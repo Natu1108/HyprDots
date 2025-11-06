@@ -1,2 +1,2 @@
 # My Hyprland dots
-Just my Hyprland docs for me to reinstall Hyprland
+Just my Hyprland dots for me to reinstall Hyprland
