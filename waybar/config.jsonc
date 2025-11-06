@@ -1,0 +1,113 @@
+{
+	"layer": "top",
+	"modules-left": ["group/left"],
+	"modules-center": ["group/center"],
+	"modules-right": ["group/right"],
+	"group/left": {
+		"orientation": "horizontal",
+		"modules": ["custom/launcher", "hyprland/workspaces"]
+	},
+	"power-profiles-daemon": {
+		"format": "{icon}",
+		"tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+		"tooltip": true,
+		"format-icons": {
+			"default": "",
+			"performance": "",
+			"balanced": "",
+				"power-saver": ""
+  		}
+	},
+	"custom/launcher": {
+		"format": "󰣇 ",
+		"tooltip": "launcher",
+		"on-click": "exec ~/.config/rofi/launchers/type-6/launcher.sh"
+	},
+	"hyprland/workspaces": {
+		"format": "{icon}",
+		"format-icons": {
+			"active": " ",
+			"default": " "
+		},
+		"persistent-workspaces": {
+			"*": 6
+		}
+	},
+	"group/center": {
+		"orientation": "horizontal",
+		"modules": ["clock"]
+	},
+	"clock": {
+		"format": "{:%I:%M %p}"
+	},
+
+	"group/right": {
+		"orientation": "horizontal",
+		"modules":["custom/pacman", "pulseaudio", "backlight", "network", "battery", "group/session"]
+	},
+	"pulseaudio": {
+		"format": " {icon} {volume}% ",
+		"format-muted": " ",
+		"format-icons": {
+			"default": [" ", " ", " "]
+		},
+		"on-click": "amixer set Master toggle"
+	},
+	"backlight": {
+		"device": "intel_backlight",
+		"format": " {icon} {percent}% ",
+		"format-icons": ["󰃞 ", "󰃝 ", "󰃟 ", "󰃠 "]
+	},
+	"network": {
+		"format-wifi": " ",
+		"tooltip-format-wifi": "{essid} ({signalStrength}%) "
+	},
+	"battery": {
+		"states": {
+			"good": 95,
+			"warning": 20,
+			"critical": 10
+		},
+		"format": "{icon} {capacity}%",
+		"format-charging": "󰂄 {capacity}%",
+		"format-plugged": "󰂄 {capacity}%",
+		"format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+		"poll-interval": 0
+	},
+	"group/session": {
+		"orientation": "horizontal",
+		"drawer": {
+			"transition-duration": 500,
+			"trasition-top-to-bottom": true
+		},
+		"modules": [
+			"custom/session-wrap",
+			"power-profiles-daemon",
+			"custom/lock",
+			"custom/reboot",
+			"custom/power"
+		]
+	},
+	"custom/session-wrap": {
+		"format": "<span color='#ffffff'>  </span>",
+		"tooltip-format": "Lock, Reboot, Shutdown"
+	},
+	"custom/lock": {
+  		    	"format": "<span color='#ffffff'>  </span>",
+  		    	"on-click": "swaylock -c 000000",
+  		    	"tooltip": true,
+  		    	"tooltip-format": "Lock screen"
+	},
+	"custom/reboot": {
+  		    	"format": "<span color='#ffffff'>  </span>",
+  		    	"on-click": "systemctl reboot",
+  		    	"tooltip": true,
+  		    	"tooltip-format": "Reboot"
+	},
+	"custom/power": {
+  		    	"format": "<span color='#ffffff'>  </span>",
+  		    	"on-click": "systemctl poweroff",
+  		    	"tooltip": true,
+  		    	"tooltip-format": "Power Off"
+	}
+}
